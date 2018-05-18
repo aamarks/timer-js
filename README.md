@@ -54,7 +54,7 @@ timer.overhead() // times a function that just returns a short string passed to 
 timer.overheadArgArray() // the same but the argument is passed as an array 
     // as you would do for multiple arguments.
     // This will be slower as the function is invoked using .apply(), 
-	// but the difference is insignificant for most uses
+    // but the difference is insignificant for most uses
 
 //Tests, code comparisons (you can pass a string to each of these or just let defaults be used)
 timer.tests.badCodeExamples() // some examples of big time losses writing poor code
