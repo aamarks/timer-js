@@ -22,7 +22,7 @@ timer.timeFunction(
     "abcdefghijklmnopqrstuvwxyz")
 ```
 
-![example output from timer.timeFunction](timer-js-results.gif)
+![example tabular output from timer.timeFunction](timer-js-results.png)
 
 ## Timing Code Snippets
 You can test a bit of code by just defining a function directly (though it may be simpler to use console.time). For example getting the 10th character from a 26 character string using the spread operator:
