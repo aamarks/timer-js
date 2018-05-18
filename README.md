@@ -6,12 +6,12 @@ The simplest case is: ` timer.timeFunction(myFunction) ` (Don't use parentheses 
 
 The general case is `timer.timeFunction([foo,bar,...], ['arg1', arg2,...]);` Pass in function(s) in an array, [foo,bar,...] followed by any arguments. You must pass in multiple arguments wrapped in an array, but should not use an array when only passing one argument as timeFunction uses the .apply() method to call your functions when they require multiple arguments which has more overhead than just invoking the function. All arguments are applied to each function. [See below](#this-keyword) if you need to set *this* for any of your timed functions.
 
-```
+```javascript
 timer.timeFunction([reverse16, reverse32], 'abcdefg')
 ```
 
 A complex example timing various methods of compressing or encoding a string, typed into the console along with the output from the console (spread to multiple lines for clarity):
-```
+```javascript
 timer.timeFunction(
     [bocu.encode,
      SCSU.prototype.compress.bind(SCSU.prototype), //the compress function in SCSU invokes this._privatefunction
@@ -26,11 +26,11 @@ timer.timeFunction(
 
 ## Timing Code Snippets
 You can test a bit of code by just defining a function directly (though it may be simpler to use console.time). For example getting the 10th character from a 26 character string using the spread operator:
-```
+```javascript
 timer.timeFunction( function () {return [..."abcdefghijklmnopqrstuvwxyz"][10];} )
 ```
 Compare Snippets:
-```
+```javascript
 timer.timeFunction( [ function A(s,n) {return [...s][n];},
                       function B(s,n) {return s[n];} 
                     ], 
@@ -39,7 +39,7 @@ timer.timeFunction( [ function A(s,n) {return [...s][n];},
 
 ## *this* Keyword
 If any of your timed functions invoke *this* you will get an error or incorrect results because when passing a function of an object as a callback *this* no longer refers to that object. To solve, bind the function to its object/namespace.
-```
+```javascript
 timer.timeFunction([ obj1.A, 
                      obj2.B.bind(obj2) 
                    ], s)
