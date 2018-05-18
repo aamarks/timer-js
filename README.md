@@ -10,7 +10,7 @@ The general case is `timer.timeFunction([foo,bar,...], ['arg1', arg2,...]);` Pas
 timer.timeFunction([reverse16, reverse32], 'abcdefg');
 ```
 
-A complex example typed into the console along with the output from the console (spread to multiple lines for clarity):
+A complex example timing various methods of compressing or encoding a string, typed into the console along with the output from the console (spread to multiple lines for clarity):
 ```
 timer.timeFunction(
     [bocu.encode,
@@ -44,7 +44,9 @@ Since this is running from your browser's console, it could slow things down sli
 
 ## this Keyword
 If any of your timed functions invoke *this* you will get an error or incorrect results because when passing a function of an object as a callback *this* no longer refers to that object. To solve, bind the function to its object/namespace.
-```timer.timeFunction([ obj1.A, obj2.B.bind(obj2) ], s);```
+```
+timer.timeFunction([ obj1.A, obj2.B.bind(obj2) ], s);
+```
 
 ## ToDo
 - might want to be able to get results formatted in an html snippet/page
