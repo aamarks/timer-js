@@ -51,13 +51,16 @@ timer.timeFunction([ obj1.A,
 //Overhead
 timer.overhead() // times a function that just returns a short string passed to it
 
-timer.overheadArgArray() // the same but the argument is passed as an array (as you would do for multiple arguments)
-    //this will be slower as the function is invoked using .apply(), but the difference is insignificant for most uses
+timer.overheadArgArray() // the same but the argument is passed as an array 
+    // as you would do for multiple arguments.
+    // This will be slower as the function is invoked using .apply(), 
+	// but the difference is insignificant for most uses
 
 //Tests, code comparisons (you can pass a string to each of these or just let defaults be used)
 timer.tests.badCodeExamples() // some examples of big time losses writing poor code
 timer.tests.forMethods() // comparison of different for loops
-timer.tests.stringCharParsing() // comparison of modern string iteration with old (and illustrating emoji problem)
+timer.tests.stringCharParsing() // comparison of modern string iteration with old 
+    // (and illustrating emoji problem)
 
 ```
 
