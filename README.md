@@ -34,9 +34,10 @@ timer.timeFunction(function () {return [..."abcdefghijklmnopqrstuvwxyz"][10];})
 ```
 Compare Snippets:
 ```
-timer.timeFunction( [ function A() {return [...s][10];},
-                      function B() {return s[10];} 
-                    ], "abcdefghijklmnopqrstuvwxyz")
+timer.timeFunction( [ function A(s,n) {return [...s][n];},
+                      function B(s,n) {return s[n];} 
+                    ], 
+                    ["abcdefghijklmnopqrstuvwxyz",10]) // passing more than one argument so wrap in array
 ```
 
 ## Notes
