@@ -36,7 +36,7 @@
 //
 //	example: timeFunction([ obj1.A, obj2.B ], s, [ ,obj2 ]); // function A doesn't invoke *this* so you can leave *this* undefined in the array, but B does
 
-var timer = timer || (function () {
+var timer = timer || (function () { 
 	"use strict";
 
 	/**
