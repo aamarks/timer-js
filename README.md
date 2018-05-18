@@ -3,7 +3,9 @@
 A simple to use, one line, single function call to time either a single function or comparable functions that use the same arguments. Easy to call from your browser's developer tools console. Results are displayed in table form in your console (and given in the timeFunction return value).
 
 You can just include timer in your project during developement. For the browser: 
-```<script src="js/__timer.js"></script> <!-- remove from production -->``` 
+```
+<script src="js/__timer.js"></script> <!-- remove from production -->
+``` 
 and begin using it from the console to test your code.
 
 ## timeFunction()
