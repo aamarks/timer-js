@@ -12,7 +12,7 @@ The general case is `timer.timeFunction([foo,bar,...], ['arg1', arg2,...]);` Pas
 timer.timeFunction([reverse16, reverse32], 'abcdefg');
 ```
 
-A complex example along with the output from the console (spread to multiple lines for clarity):
+A complex example typed into the console along with the output from the console (spread to multiple lines for clarity):
 ```
 timer.timeFunction(
     [bocu.encode,
@@ -24,7 +24,7 @@ timer.timeFunction(
     "abcdefghijklmnopqrstuvwxyz",
     [,SCSU.prototype,,,]) // the compress in SCSU invoked this._privatefunction which fails without setting this here
 ```
-
+->![example output from timer.timeFunction](timer-js-results.png)<-
 
 ## Timing Code Snippets
 You can test a bit of code by just defining a function directly (though it may be simpler to use console.time). For example getting the 10th character from a 26 character string using the spread operator:
