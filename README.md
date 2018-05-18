@@ -37,7 +37,7 @@ timer.timeFunction( [ function A(s,n) {return [...s][n];},
                     ["abcdefghijklmnopqrstuvwxyz",10]) // passing more than one argument so wrap in array
 ```
 
-## this Keyword
+## *this* Keyword
 If any of your timed functions invoke *this* you will get an error or incorrect results because when passing a function of an object as a callback *this* no longer refers to that object. To solve, bind the function to its object/namespace.
 ```
 timer.timeFunction([ obj1.A, obj2.B.bind(obj2) ], s);
