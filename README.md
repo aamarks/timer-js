@@ -1,8 +1,6 @@
 # timer-js
 
-A simple to use, one line, single function call to time either your comparable functions with similar arguments or a single function. Easy to call from your browser's developer tools console. Results displayed in table form in your console (and given in the timeFunction return value.)
-
-with their common arguments. 
+A simple to use, one line, single function call to time either a single function or comparable functions that use the same arguments. Easy to call from your browser's developer tools console. Results are displayed in table form in your console (and given in the timeFunction return value).
 
 The simplest case is: ` timer.timeFunction(myFunction); ` (Don't use parentheses `myFunction()` or you will be passing the result of the function rather than the function definition.)
 
@@ -16,13 +14,12 @@ A complex example typed into the console along with the output from the console 
 ```
 timer.timeFunction(
     [bocu.encode,
-    SCSU.prototype.compress,
+    SCSU.prototype.compress.bind(SCSU.prototype), //the compress function in SCSU invokes this._privatefunction
     compress.deflateRaw, 
     LZString.compress, 
     function utf8(s){ return unescape(encodeURIComponent(s));}
     ],
-    "abcdefghijklmnopqrstuvwxyz",
-    [,SCSU.prototype,,,]) // the compress in SCSU invoked this._privatefunction which fails without setting this here
+    "abcdefghijklmnopqrstuvwxyz")
 ```
 
 ![example output from timer.timeFunction](timer-js-results.gif)
@@ -46,8 +43,8 @@ This compares well with timing the function directly. The overhead is minimal. Y
 Since this is running from your browser's console, it could slow things down slightly (the console is doing all kinds of things documenting your code) but the results seem relatively consistant with jsperf. Jsperf uses Benchmark.js which you may also be able to use, however I find this much simpler and convenient to use. This can also lag jsperf for very fast code because usually there you aren't getting function returns. Timing intervals could be shorter so that op system is less likely to interupt with other tasks. You could repeat brief tests and sum up for longer total and possibly throw out aberant values that indicate background tasks. But this does a good job at comparing times as is.
 
 ## this Keyword
-There is an optional third argument of timeFunction `aThis, [this1, this2,...]` corresponding with the number of functions passed which allows for setting *this* if any of your timed functions invoke this. 
-```timer.timeFunction([ obj1.A, obj2.B ], s, [ ,obj2 ]); // function A doesn't invoke *this* so you can leave *this* undefined in the array, but B does```
+If any of your timed functions invoke *this* you will get an error or incorrect results because when passing a function of an object as a callback *this* no longer refers to that object. To solve, bind the function to its object/namespace.
+```timer.timeFunction([ obj1.A, obj2.B.bind(obj2) ], s);```
 
 ## ToDo
 - might want to be able to get results formatted in an html snippet/page
