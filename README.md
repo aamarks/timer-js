@@ -19,7 +19,7 @@ timer.timeFunction(
     LZString.compress, 
     function utf8(s){ return unescape(encodeURIComponent(s));}
     ],
-    "abcdefghijklmnopqrstuvwxyz")
+    "abcdefghij")
 ```
 
 ![example tabular output from timer.timeFunction](timer-js-results.png)
