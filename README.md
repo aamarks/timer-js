@@ -2,6 +2,8 @@
 
 A simple to use, one line, single function call to time either a single function or comparable functions that use the same arguments. Easy to call from your browser's developer tools console. Results are displayed in table form in your console (and given in the timeFunction return value).
 
+You can just include timer in your project during developement. For the browser: ```<script src="js/__timer.js"></script> <!-- remove from production -->``` and begin using it from the console to test your code.
+
 ## timeFunction()
 The main function in __timer.js. The simplest usage is timing a single function that takes no arguments: ` timer.timeFunction(myFunction) ` (Don't use parentheses `myFunction()` or you will be passing the result of the function rather than the function definition.)
 
@@ -67,11 +69,11 @@ timer.tests.stringCharParsing() // comparison of modern string iteration with ol
 ## Notes
 This compares well with timing the function directly. The overhead is minimal. You could even run it blank and then subtract out the overhead. However even a fast reverse16 function with a short 6 char string is more than a hundred times slower than a blank function so the overhead is insignificant. There is definitely some extra time in js when a function is first called so I'm guessing it's keeping the function ready to be reused quickly.
 
-Since this is running from your browser's console, it could slow things down slightly (the console is doing all kinds of things documenting your code) but the results seem relatively consistant with jsperf. Jsperf uses Benchmark.js which you may also be able to use, however I find this much simpler and convenient to use. This can also lag jsperf for very fast code because usually there you aren't getting function returns. Timing intervals could be shorter so that op system is less likely to interupt with other tasks. You could repeat brief tests and sum up for longer total and possibly throw out aberant values that indicate background tasks. But this does a good job at comparing times as is.
+Since this is running from your browser's console, it could slow things down slightly (the console is doing all kinds of things documenting your code) but the results seem relatively consistant with Mathias Bynens' [jsperf](https://jsperf.com/). Jsperf uses Benchmark.js which you may also be able to use, however I find this simpler and more convenient to use. This can also lag jsperf for very fast code because usually there you aren't getting function returns. Timing intervals could be shorter so that op system is less likely to interupt with other tasks. One could repeat brief tests and sum up for longer total and possibly throw out aberant values that indicate background tasks, but this does a good job at comparing times as is.
 
 ## ToDo
 - might want to be able to get results formatted in an html snippet/page
-- When anonymous function is used no name is given in formatted results. Don't think there is a way to get this in js other than using .toSource() which is only supported in Firefox.
+- When an anonymous function is used no name is given in the formatted results. I don't think there is a way to get the name in js other than using .toSource() which is only supported in Firefox.
 
 ## Author
 Arthur Marks [@aamarks](https://github.com/aamarks), copyright 2018.
