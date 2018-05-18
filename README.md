@@ -53,7 +53,7 @@ Since this is running from your browser's console, it could slow things down sli
 - When anonymous function is used no name is given in formatted results. Don't think there is a way to get this in js other than using .toSource() which is only supported in Firefox.
 
 ## Author
-Arthur Marks @aamarks, copyright 2018.
+Arthur Marks [@aamarks](https://github.com/aamarks), copyright 2018.
 
 ## License
 MIT
