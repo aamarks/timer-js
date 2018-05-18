@@ -2,7 +2,8 @@
 
 A simple to use, one line, single function call to time either a single function or comparable functions that use the same arguments. Easy to call from your browser's developer tools console. Results are displayed in table form in your console (and given in the timeFunction return value).
 
-The simplest case is: ` timer.timeFunction(myFunction) ` (Don't use parentheses `myFunction()` or you will be passing the result of the function rather than the function definition.)
+## timeFunction()
+The main function in __timer.js. The simplest usage is timing a single function that takes no arguments: ` timer.timeFunction(myFunction) ` (Don't use parentheses `myFunction()` or you will be passing the result of the function rather than the function definition.)
 
 The general case is `timer.timeFunction([foo,bar,...], ['arg1', arg2,...]);` Pass in function(s) in an array, [foo,bar,...] followed by any arguments. You must pass in multiple arguments wrapped in an array, but should not use an array when only passing one argument as timeFunction uses the .apply() method to call your functions when they require multiple arguments which has more overhead than just invoking the function. All arguments are applied to each function. [See below](#this-keyword) if you need to set *this* for any of your timed functions.
 
@@ -43,6 +44,21 @@ If any of your timed functions invoke *this* you will get an error or incorrect 
 timer.timeFunction([ obj1.A, 
                      obj2.B.bind(obj2) 
                    ], s)
+```
+
+## Other Functions
+```javascript
+//Overhead
+timer.overhead() // times a function that just returns a short string passed to it
+
+timer.overheadArgArray() // the same but the argument is passed as an array (as you would do for multiple arguments)
+    //this will be slower as the function is invoked using .apply(), but the difference is insignificant for most uses
+
+//Tests, code comparisons (you can pass a string to each of these or just let defaults be used)
+timer.tests.badCodeExamples() // some examples of big time losses writing poor code
+timer.tests.forMethods() // comparison of different for loops
+timer.tests.stringCharParsing() // comparison of modern string iteration with old (and illustrating emoji problem)
+
 ```
 
 ## Notes
