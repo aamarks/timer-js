@@ -25,7 +25,7 @@ timer.timeFunction(
     [,SCSU.prototype,,,]) // the compress in SCSU invoked this._privatefunction which fails without setting this here
 ```
 
-![example output from timer.timeFunction](timer-js-results.png)
+![example output from timer.timeFunction](timer-js-results.gif)
 
 ## Timing Code Snippets
 You can test a bit of code by just defining a function directly (though it may be simpler to use console.time). For example getting the 10th character from a 26 character string using the spread operator:
