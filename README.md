@@ -2,22 +2,22 @@
 
 A simple to use, one line, single function call to time either a single function or comparable functions that use the same arguments. Easy to call from your browser's developer tools console. Results are displayed in table form in your console (and given in the timeFunction return value).
 
-The simplest case is: ` timer.timeFunction(myFunction); ` (Don't use parentheses `myFunction()` or you will be passing the result of the function rather than the function definition.)
+The simplest case is: ` timer.timeFunction(myFunction) ` (Don't use parentheses `myFunction()` or you will be passing the result of the function rather than the function definition.)
 
 The general case is `timer.timeFunction([foo,bar,...], ['arg1', arg2,...]);` Pass in function(s) in an array, [foo,bar,...] followed by any arguments. You must pass in multiple arguments wrapped in an array, but should not use an array when only passing one argument as timeFunction uses the .apply() method to call your functions when they require multiple arguments which has more overhead than just invoking the function. All arguments are applied to each function. [See below](#this-keyword) if you need to set *this* for any of your timed functions.
 
 ```
-timer.timeFunction([reverse16, reverse32], 'abcdefg');
+timer.timeFunction([reverse16, reverse32], 'abcdefg')
 ```
 
 A complex example timing various methods of compressing or encoding a string, typed into the console along with the output from the console (spread to multiple lines for clarity):
 ```
 timer.timeFunction(
     [bocu.encode,
-    SCSU.prototype.compress.bind(SCSU.prototype), //the compress function in SCSU invokes this._privatefunction
-    compress.deflateRaw, 
-    LZString.compress, 
-    function utf8(s){ return unescape(encodeURIComponent(s));}
+     SCSU.prototype.compress.bind(SCSU.prototype), //the compress function in SCSU invokes this._privatefunction
+     compress.deflateRaw, 
+     LZString.compress, 
+     function utf8(s){ return unescape(encodeURIComponent(s)); }
     ],
     "abcdefghij")
 ```
@@ -27,7 +27,7 @@ timer.timeFunction(
 ## Timing Code Snippets
 You can test a bit of code by just defining a function directly (though it may be simpler to use console.time). For example getting the 10th character from a 26 character string using the spread operator:
 ```
-timer.timeFunction(function () {return [..."abcdefghijklmnopqrstuvwxyz"][10];})
+timer.timeFunction( function () {return [..."abcdefghijklmnopqrstuvwxyz"][10];} )
 ```
 Compare Snippets:
 ```
@@ -42,7 +42,7 @@ If any of your timed functions invoke *this* you will get an error or incorrect 
 ```
 timer.timeFunction([ obj1.A, 
                      obj2.B.bind(obj2) 
-                   ], s);
+                   ], s)
 ```
 
 ## Notes
