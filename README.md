@@ -71,11 +71,14 @@ timer.tests.stringCharParsing() // comparison of modern string iteration with ol
 ```
 
 ## Notes
+
+- Each test is designed to run very roughly for 1 second unless your function takes longer for even one iteration. Performance.now has significant overhead (if called on every iteration) so it is only called in timeFunction a few times on even the fastest functions to gauge the test length bases upon the initial iterations. It does not later check if the duration is approaching 1 second. If the test length is far from 1 second it is likely the cpu was working on other tasks (could still be the case even near 1 second). The test lengths are reported in the results not for any speed info, but to give some indication of background tasks.
+
 - This compares well with timing the function directly. The overhead is minimal. You could even run it blank and then subtract out the overhead. However even a fast reverse16 function with a short 6 char string is more than a hundred times slower than a blank function so the overhead is insignificant. There is definitely some extra time in js when a function is first called so I'm guessing it's keeping the function ready to be reused quickly.
 
 - Since this is running from your browser's console, it could slow things down slightly (the console is doing all kinds of things documenting your code) but the results seem relatively consistant with Mathias Bynens' [jsperf](https://jsperf.com/). Jsperf uses Benchmark.js which you may also be able to use, however I find this simpler and more convenient to use. He has been very thorough in ensuring results are statistically significant.
 
-- This is a high performance timer, however browsers are currently [limiting the precision of performance.now]( https://developer.mozilla.org/en-US/docs/Web/API/Performance/now). I doubt this would be the case for npm, but haven't used npm yet other than for things like running Grunt. Regardless, this provides more than adequate analysis of code design. You shouldn't be worried about a few percentage points when the next iteration of browser/npm may reverse that.
+- This is a high performance timer, however browsers are currently [limiting the precision of performance.now]( https://developer.mozilla.org/en-US/docs/Web/API/Performance/now). I doubt this would be the case for npm, but haven't used npm yet other than for things like running Grunt. Regardless, this provides more than adequate analysis of code design. You shouldn't be worried about a few percentage points when the next iteration of browser/npm may reverse that, and with a test length of 1 second the effect from that is far less than 1%.
 
 ## ToDo
 - might want to be able to get results formatted in an html snippet/page
