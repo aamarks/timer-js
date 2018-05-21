@@ -2,7 +2,7 @@
 
 A simple to use, one line, single function call to time either a single function or comparable functions that use the same arguments. Easy to call from your browser's developer tools console. Results are displayed in table form in your console (and given in the timeFunction return value).
 
-You can just include timer in your project during developement. For the browser: 
+You can just include timer in your project during development. For the browser: 
 ```
 <script src="js/__timer.js"></script> <!-- remove from production -->
 ``` 
@@ -71,9 +71,11 @@ timer.tests.stringCharParsing() // comparison of modern string iteration with ol
 ```
 
 ## Notes
-This compares well with timing the function directly. The overhead is minimal. You could even run it blank and then subtract out the overhead. However even a fast reverse16 function with a short 6 char string is more than a hundred times slower than a blank function so the overhead is insignificant. There is definitely some extra time in js when a function is first called so I'm guessing it's keeping the function ready to be reused quickly.
+- This compares well with timing the function directly. The overhead is minimal. You could even run it blank and then subtract out the overhead. However even a fast reverse16 function with a short 6 char string is more than a hundred times slower than a blank function so the overhead is insignificant. There is definitely some extra time in js when a function is first called so I'm guessing it's keeping the function ready to be reused quickly.
 
-Since this is running from your browser's console, it could slow things down slightly (the console is doing all kinds of things documenting your code) but the results seem relatively consistant with Mathias Bynens' [jsperf](https://jsperf.com/). Jsperf uses Benchmark.js which you may also be able to use, however I find this simpler and more convenient to use. This can also lag jsperf for very fast code because usually there you aren't getting function returns. Timing intervals could be shorter so that op system is less likely to interupt with other tasks. One could repeat brief tests and sum up for longer total and possibly throw out aberant values that indicate background tasks, but this does a good job at comparing times as is.
+- Since this is running from your browser's console, it could slow things down slightly (the console is doing all kinds of things documenting your code) but the results seem relatively consistant with Mathias Bynens' [jsperf](https://jsperf.com/). Jsperf uses Benchmark.js which you may also be able to use, however I find this simpler and more convenient to use. He has been very thorough in ensuring results are statistically significant.
+
+- This is a high performance timer, however browsers are currently [limiting the precision of performance.now]( https://developer.mozilla.org/en-US/docs/Web/API/Performance/now). I doubt this would be the case for npm, but haven't used npm yet other than for things like running Grunt. Regardless, this provides more than adequate analysis of code design. You shouldn't be worried about a few percentage points when the next iteration of browser/npm may reverse that.
 
 ## ToDo
 - might want to be able to get results formatted in an html snippet/page
