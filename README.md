@@ -78,7 +78,7 @@ timer.tests.stringCharParsing() // comparison of modern string iteration with ol
 
 - Since this is running from your browser's console, it could slow things down slightly, but the results seem relatively consistant with Mathias Bynens' [jsperf](https://jsperf.com/). Jsperf uses Benchmark.js which you may also be able to use, however I find this simpler and more convenient to use. He has been very thorough in ensuring results are statistically significant.
 
-- This is a high performance timer, however browsers are currently [limiting the precision of performance.now]( https://developer.mozilla.org/en-US/docs/Web/API/Performance/now). I doubt this would be the case for node.js, but haven't used node yet other than for things like running Grunt. Regardless, this provides more than adequate analysis of code design. You shouldn't be worried about a few percentage points when the next iteration of browser/npm may reverse that, and with a test length of 1 second the effect from that is far less than 1%.
+- This is a high performance timer, however browsers are currently [limiting the precision of performance.now]( https://developer.mozilla.org/en-US/docs/Web/API/Performance/now). I doubt this would be the case for node.js, but haven't used node yet other than for things like running Grunt. Regardless, this provides more than adequate analysis of code design. You shouldn't be worried about a few percentage points when the next iteration of browser/node may reverse that, and with a test length of 1 second the effect from that is far less than 1%.
 
 ## ToDo
 - might want to be able to get results formatted in an html snippet/page
