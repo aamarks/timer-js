@@ -11,7 +11,7 @@ and begin using it from the console to test your code.
 ## timeFunction()
 The main function in __timer.js. The simplest usage is timing a single function that takes no arguments: ` timer.timeFunction(myFunction) ` (Don't use parentheses `myFunction()` or you will be passing the result of the function rather than the function definition.)
 
-The general case is `timer.timeFunction([foo,bar,...], ['arg1', arg2,...]);` Pass in function(s) in an array, [foo,bar,...] followed by any arguments. You must pass in multiple arguments wrapped in an array, but should not use an array when only passing one argument as timeFunction uses the .apply() method to call your functions when they require multiple arguments which has more overhead than just invoking the function. All arguments are applied to each function. [See below](#this-keyword) if you need to set *this* for any of your timed functions.
+The general case is `timer.timeFunction([foo,bar,...], ['arg1', arg2,...]);` Pass in function(s) in an array, [foo,bar,...] followed by any arguments. You must pass in multiple arguments wrapped in an array, but should not use an array when only passing one argument as timeFunction uses the .apply() method to call your functions when they require multiple arguments which has more overhead than just invoking the function. All arguments are applied to each function. [See below](#this-keyword) if you need to bind *this* to any of your timed functions.
 
 ```javascript
 timer.timeFunction([reverse16, reverse32], 'abcdefg')
@@ -55,7 +55,7 @@ timer.timeFunction([ obj1.A,
 ## Other Functions
 ```javascript
 //Overhead
-timer.overhead() // times a function that just returns a short string passed to it
+timer.overhead() // times a blank function that just returns a short string passed to it
 
 timer.overheadArgArray() // the same but the argument is passed as an array 
     // as you would do for multiple arguments.
